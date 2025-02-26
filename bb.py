@@ -44,10 +44,11 @@ def fetch_landsnet_data(segments, digits):
                 for measurement in data:
                     better_data[measurement['key']] = measurement
                 save_to_json('better_data.json', better_data, pretty=True)
-                gogn1 = better_data['TA1']['MW']
-                gogn2 = better_data['TA1']['time']
+                gogn1 = better_data['BV2']['MW']
+                gogn2 = better_data['BV2]['time']
                 print("hallo heimur")
-                print(gogn1)
+                print(gogn1, "MW")
+                print("Tálknafjarðarlína 1")
                 print(gogn2)
 
                 num = {' ': (0, 0, 0, 0, 0, 0, 0),
@@ -99,10 +100,10 @@ def fetch_landsnet_data(segments, digits):
                                 elif staerdargrada_gogn1 == 2 and digit == 2:
                                     GPIO.output(25, 1)
                             GPIO.output(digits[digit], 0)
-                            time.sleep(0.004)
+                            time.sleep(0.002)
                             GPIO.output(digits[digit], 1)
                             GPIO.output(25, 0)
-                            time.sleep(0.001)
+                            time.sleep(0.0001)
                 finally:
                     GPIO.cleanup()
 def main():
